@@ -655,6 +655,10 @@ PlatformFeaturesInit (
       LdrFeatures &= ~FEATURE_VERIFIED_BOOT;
     }
   }
+//7583X003_2
+PlatformData->BtGuardInfo.BypassTpmInit = FALSE;
+PlatformData->BtGuardInfo.TpmType = Ptt;
+//7583X003_2
 
   SetFeatureCfg (LdrFeatures);
 }
@@ -674,6 +678,11 @@ TpmInitialize (
 
   BootMode     = GetBootMode();
   PlatformData = (PLATFORM_DATA *)GetPlatformDataPtr ();
+
+//7583X003_2
+if(PlatformData->BtGuardInfo.TpmType == Ptt)
+    Status = TpmInit(PlatformData->BtGuardInfo.BypassTpmInit, BootMode);
+//7583X003_2
 
   if((PlatformData != NULL) && PlatformData->BtGuardInfo.MeasuredBoot &&
     (!PlatformData->BtGuardInfo.DisconnectAllTpms) &&
@@ -876,9 +885,9 @@ DEBUG_CODE_END();
   case PreTempRamExit:
     break;
   case PostTempRamExit:
-    if (MEASURED_BOOT_ENABLED()) {
+//7583X003_1    if (MEASURED_BOOT_ENABLED()) {
       TpmInitialize();
-    }
+//7583X003_1    }
     break;
   default:
     break;

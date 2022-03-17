@@ -24,7 +24,7 @@ Status
 
   |Tigerlake|Platform ID|Bring up|GPIO|HSIO|EC(IO)|GOP(VBT)|PYLD|EPLD|
   |----|----|----|----|----|----|----|----|----|
-  |SOM-7583|0x10|Yes|Yes|Yes|NotReady|Yes|OSLR|UEFI|
+  |SOM-7583|0x10|Yes|Yes|Yes|Yes|Yes|OSLR|UEFI|
 
   |Elkhartlake|Platform ID|BringUp|GPIO|HSIO|EC(IO)|GOP(VBT)|Payload|
   |----|----|----|----|----|----|----|----|
@@ -32,6 +32,13 @@ Status
 
 History
 -------
+
+> ##7583000S000X003    
+>
+>>  7583X003_1    Add EC support.
+>>  7583X003_2    Add ftpm support.
+>>  7583X003_3    Update System_OK GPIO state E7 at PreSiliconInit stage.
+>>  7583X003_4    Add Realtek ALC892 Audio Codec Verb table.
 
   7583X002    Update Platform ID to 0x10 and enable SOC UART2 debug port.
   

@@ -39,7 +39,7 @@ MEMORY_CFG_DATA.UsbTcPortEnPreMem                           | 0
 
 MEMORY_CFG_DATA.PcieClkSrcUsage   | { 0x40, 0x80, 0xFF, 0xFF, 0x08, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }
 
-# MEMORY_CFG_DATA.IsTPMPresence                               | 1
+
 
 #SILICON_CFG_DATA.PortUsb20Enable.Usb2Port1                  | 0
 
@@ -79,3 +79,17 @@ FEATURES_CFG_DATA.Features.S0ix                             | 1
 #PEP_CFG_DATA.PepTcss                                        | 0
 PEP_CFG_DATA.PepSpi                                         | 0
 PEP_CFG_DATA.PepUart                                        | 0
+
+FEATURES_CFG_DATA.Features.MeasuredBoot     | 1
+
+
+# BOOT_OPTION_CFG_DATA_0 is USB boot
+# Allow to boot from USB partition 0 and FAT filesystem by default
+BOOT_OPTION_CFG_DATA_1.ImageType_1                          | 0
+BOOT_OPTION_CFG_DATA_1.BootFlags_1                          | 0
+BOOT_OPTION_CFG_DATA_1.BootDeviceType_1                     | 5
+BOOT_OPTION_CFG_DATA_1.BootDeviceInstance_1                 | 0
+BOOT_OPTION_CFG_DATA_1.SwPart_1                             | 0
+BOOT_OPTION_CFG_DATA_1.HwPart_1                             | 0
+BOOT_OPTION_CFG_DATA_1.FsType_1                             | 0
+BOOT_OPTION_CFG_DATA_1.BootImage_1                          | 'usb-ubuntu'

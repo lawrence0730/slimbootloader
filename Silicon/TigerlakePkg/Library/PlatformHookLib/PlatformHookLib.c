@@ -191,7 +191,9 @@ PlatformHookSerialPortInitialize (
     MmioWrite32 (BarAddress + R_LPSS_IO_MEM_PCP, Data32);
     MmioWrite32 (BarAddress + R_LPSS_IO_MEM_PCP, Data32 | B_LPSS_IO_MEM_PCP_CLK_UPDATE);
     MmioRead32  (BarAddress + R_LPSS_IO_MEM_PCP);
+//7583X003_1
   } else {
+//7583X003_1
     LegacySerialPortInitialize ();
   }
 

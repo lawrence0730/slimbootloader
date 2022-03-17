@@ -1058,7 +1058,20 @@ BoardInit (
     if ((GetBootMode() != BOOT_ON_FLASH_UPDATE) && (GetPayloadId() == 0)) {
       ProgramSecuritySetting ();
     }
-
+//7583X003_3
+{
+  // EC boot count command
+    IoWrite8(0x29A, 0x2F);  // EC boot count
+  //	Set GPIO to System_OK_LED turn on.
+  // GPP_E7, FD6A0000h + AE0h
+  // Bit9 GPIO RX Disable, Bit8 GPIO TX Disable
+  // Bit1 GPIO RX State, Bit0 GPIO TX State
+    UINT32  GPIOlevel;
+    GPIOlevel = MmioRead32( 0xFD6A0AE0 );
+    GPIOlevel = (GPIOlevel & 0xFFFFFEFE) | 0x200;    // set System_OK LED#
+    MmioWrite32(0xFD6A0AE0, GPIOlevel );
+}
+//7583X003_3
     break;
   default:
     break;
@@ -1346,7 +1359,7 @@ UpdateFspConfig (
 // SOM7583 >>
     FspsConfig->SerialIoUartMode[0] = 0;  // Force UART to PCI mode to enable OS to have full control
     FspsConfig->SerialIoUartMode[1] = 0;  // Force UART to PCI mode to enable OS to have full control
-    FspsConfig->SerialIoUartMode[2] = 1;  //7583X002 Force UART to PCI mode to enable OS to have full control
+    FspsConfig->SerialIoUartMode[2] = 0;  //7583X003_1 Force UART to PCI mode to enable OS to have full control
 // SOM7583 >>
   //
   // Update device interrupt table
@@ -1436,6 +1449,8 @@ UpdateFspConfig (
       HdaVerbTablePtr[HdaVerbTableNum++]   = (UINT32)(UINTN) &TglHdaVerbTableAlc711;
       HdaVerbTablePtr[HdaVerbTableNum++]   = (UINT32)(UINTN) &TglHdaVerbTableAlc701;
       HdaVerbTablePtr[HdaVerbTableNum++]   = (UINT32)(UINTN) &TglHdaVerbTableAlc274;
+//7583X003_4
+      HdaVerbTablePtr[HdaVerbTableNum++]   = (UINT32)(UINTN) &OemHdaVerbTblSomDb5830;
       FspsUpd->FspsConfig.PchHdaVerbTablePtr      = (UINT32)(UINTN) HdaVerbTablePtr;
       FspsUpd->FspsConfig.PchHdaVerbTableEntryNum = HdaVerbTableNum;
     } else {

@@ -132,10 +132,10 @@ python Platform/CoffeelakeBoardPkg/Script/StitchLoader.py -i Platform/Coffeelake
 
 :Stitchtgl
 @IF "%3"=="-r" goto Stitchtglr
-python Platform/TigerlakeBoardPkg/Script/StitchLoader.py -i Platform/TigerlakeBoardPkg/BiosBin/7583000U060V110.BIN -s Outputs/tgl/SlimBootloader.bin -o Build/7583001S060X002.BIN -p AA000210
+python Platform/TigerlakeBoardPkg/Script/StitchLoader.py -i Platform/TigerlakeBoardPkg/BiosBin/7583000U060V110.BIN -s Outputs/tgl/SlimBootloader.bin -o Build/7583001S000X003.BIN -p AA00FE10
 @goto StitchEnd
 :Stitchtglr
-python Platform/TigerlakeBoardPkg/Script/StitchLoader.py -i Platform/TigerlakeBoardPkg/BiosBin/7583000U060V110.BIN -s Outputs/tgl/SlimBootloader.bin -o Build/7583000S060X002.BIN -p AA000210
+python Platform/TigerlakeBoardPkg/Script/StitchLoader.py -i Platform/TigerlakeBoardPkg/BiosBin/7583000U060V110.BIN -s Outputs/tgl/SlimBootloader.bin -o Build/7583000S000X003.BIN -p AA00FF10
 ::python Platform/TigerlakeBoardPkg/Script/StitchIfwi.py -b vm -w %CD%\..\Download\TigerlakeStitch -c Platform/TigerlakeBoardPkg/Script/StitchIfwiConfig_tglu.py -s Outputs/tgl/Stitch_Components.zip -p tglu_b0
 
 @goto StitchEnd
